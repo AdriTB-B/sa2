@@ -1,10 +1,10 @@
-package com.adri.sa2.storage;
+package com.adri.sa2.application.storage;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties
+@ConfigurationProperties("storage")
 public class StorageConfigurationProperties {
-    private String path = "/";
+    private String path = ".\\files";
 
     public String getPath() {
         return path;
