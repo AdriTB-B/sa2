@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.nio.file.Path;
 import java.util.Date;
 
 @Data
@@ -23,10 +21,13 @@ public class FileModel {
     private String extension;
     private String fileName;
     private Date uploadDate;
+    private String path;
 
     public FileModel(FileDTO file){
         setFileName(file.getFileName());
         setExtension(file.getExtension());
         setUploadDate(new Date());
+        setPath(file.getPath());
     }
+
 }

@@ -1,13 +1,12 @@
 package com.adri.sa2.infrastructure.dto;
 
 import com.adri.sa2.domain.FileModel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
+import java.nio.file.Path;
 import java.util.Date;
 
 @Data
@@ -17,6 +16,7 @@ public class FileDTO {
     private String extension;
     private String fileName;
     private Date uploadDate;
+    private String path;
 
     //Output
     public FileDTO(FileModel file){
@@ -24,11 +24,13 @@ public class FileDTO {
         setFileName(file.getFileName());
         setExtension(file.getExtension());
         setUploadDate(file.getUploadDate());
+        setPath(file.getPath());
     }
 
     //Input
-    public FileDTO(String fileName, String extension){
+    public FileDTO(String fileName, String extension, String path){
         setFileName(fileName);
         setExtension(extension);
+        setPath(path);
     }
 }
