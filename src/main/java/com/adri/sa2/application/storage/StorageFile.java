@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 
 public interface StorageFile {
-    void init();
     Path store(MultipartFile file);
 
     Resource download(Path fileName);

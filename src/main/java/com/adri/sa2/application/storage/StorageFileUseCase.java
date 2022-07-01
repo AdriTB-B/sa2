@@ -14,16 +14,11 @@ import java.nio.file.Path;
 
 @Component
 public class StorageFileUseCase implements StorageFile {
-    private final Path rootPath;
+    private final StorageConfigurationProperties properties;
 
     @Autowired
     public StorageFileUseCase(StorageConfigurationProperties properties){
-        this.rootPath = Path.of(properties.getPath());
-    }
-
-    @Override
-    public void init() {
-
+        this.properties = properties;
     }
 
     @Override
@@ -32,7 +27,7 @@ public class StorageFileUseCase implements StorageFile {
             if (file.isEmpty()) {
                 throw new StorageException("El archivo: " + file.getOriginalFilename() + " está vacío");
             }
-            Path path = this.rootPath.resolve(file.getOriginalFilename());
+            Path path = Path.of(properties.getPath()).resolve(file.getOriginalFilename());
             System.out.println("Name: " + file.getOriginalFilename());
             System.out.println("Path: " + path);
             System.out.println("Content: " + file.getBytes());
